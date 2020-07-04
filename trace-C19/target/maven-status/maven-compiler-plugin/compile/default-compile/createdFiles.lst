@@ -1,2 +1,3 @@
-com/tracecovid/servlets/incomingLocationServlet.class
-com/tracecovid/servlets/outgoingLocationServlet.class
+com/tracecovid/servlets/IncomingLocationServlet.class
+com/tracecovid/services/LocationService.class
+com/tracecovid/servlets/OutgoingLocationServlet.class
