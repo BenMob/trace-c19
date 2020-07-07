@@ -1,7 +1,2 @@
-/home/bombeni1/software-product-sprint/walkthroughs/week-4-tdd/project/src/main/java/com/google/sps/Event.java
-/home/bombeni1/software-product-sprint/walkthroughs/week-4-tdd/project/src/main/java/com/google/sps/TimeRange.java
-/home/bombeni1/software-product-sprint/walkthroughs/week-4-tdd/project/src/main/java/com/google/sps/FindMeetingQuery.java
-/home/bombeni1/software-product-sprint/walkthroughs/week-4-tdd/project/src/main/java/com/google/sps/MeetingRequest.java
-/home/bombeni1/software-product-sprint/walkthroughs/week-4-tdd/project/src/main/java/com/google/sps/servlets/GetEventsServlet.java
-/home/bombeni1/software-product-sprint/walkthroughs/week-4-tdd/project/src/main/java/com/google/sps/Events.java
-/home/bombeni1/software-product-sprint/walkthroughs/week-4-tdd/project/src/main/java/com/google/sps/servlets/QueryServlet.java
+/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/servlets/incomingLocationServlet.java
+/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/servlets/outgoingLocationServlet.java
