@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Geocoder</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="style-geocoder.css" rel="stylesheet" type="text/css" />
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -16,88 +16,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
+  <!-- for the search only version -->
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+
+  <!-- for the default version -->
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch.umd.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CObject.entries%2CObject.assign"></script>
   <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/places.js/1/places.min.js"></script>
-
-</head>
-
-<body>
-  <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel-panel-primary">
-          <div class="panel-heading">
-            Geocoder
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <!-- Form -->
-                <form>
-                  <input autocomplete="off" type="search" id="input-map" class="form-control" placeholder="Type an address here..." />
-                </form>
-              </div>
-
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <form action="" class="form">
-                  <div class="form-group">
-                    <br>
-                    <label for="form-full-address">Matched address</label>
-                    <input disabled="disabled" autocomplete="off" type="text" class="form-control" id="form-full-address" value="" />
-                  </div>
-                  <div class="form-group">
-                    <label for="form-latitude">Latitude</label>
-                    <input autocomplete="off" type="text" class="form-control" id="form-latitude">
-                  </div>
-                  <div class="form-group">
-                    <label for="form-longitude">Longitude</label>
-                    <input autocomplete="off" type="text" class="form-control" id="form-longitude">
-                  </div>
-                  <div class="form-type">
-                    <label for="form-type">Type</label>
-                    <input autocomplete="off" type="text" class="form-control" id="form-type">
-                  </div>
-
-                </form>
-
-              </div>
-              <br>
-              <div class="col-md-6">
-                <div id="map-example-container"></div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-
-</html>
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Geocoder</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
-  <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/places.js/1/places.min.js"></script>
+  <script src="geocoder.js"></script>
 
 </head>
 
