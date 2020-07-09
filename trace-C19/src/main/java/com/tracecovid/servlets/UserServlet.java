@@ -7,17 +7,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
 import com.tracecovid.services.ValidationService;
 
-@WebServlet("/add-user")
+@WebServlet(name = "UserServlet", urlPatterns ="/add-user")
 public class UserServlet extends HttpServlet{
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.getWriter().print("Testing");
+    }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //check valid password
-        //check valid user
-        //add user to database
+       
         //aharris-sps-summer20:us-central1:trace-covid
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -27,8 +32,10 @@ public class UserServlet extends HttpServlet{
         
         if(ValidationService.checkUser("", NewUser, NewPass))
         {
-            RequestDispatcher rs = request.getRequestDispatcher("Welcome");
-            rs.forward(request, response);
+            // RequestDispatcher rs = request.getRequestDispatcher("Welcome");
+            // rs.forward(request, response);
+
+            out.print("Login Successful");
         }
         else
         {

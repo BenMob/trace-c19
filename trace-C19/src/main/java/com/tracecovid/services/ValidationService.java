@@ -14,8 +14,8 @@ public class ValidationService {
 
             //creating connection with the database
             //34.66.144.100
-            Connection con = DriverManager.getConnection("jdbc:mysql://34.66.144.100:3306","application","password123");
-            PreparedStatement ps = con.prepareStatement("select * from users where (email=? or username=?) and pass=?");
+            Connection con = DriverManager.getConnection("jdbc:mysql://34.66.144.100:3306/applicationDatabase","application","password123");
+            PreparedStatement ps = con.prepareStatement("select * from users where (email like ? or username like ?) and password=SHA(?)");
             ps.setString(1, email);
             ps.setString(2, username);
             ps.setString(3, pass);
