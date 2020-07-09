@@ -8,10 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/outLocation")
 public class OutgoingLocationServlet extends HttpServlet{
-
+    //public void init() throws ServletException{
+        //zipCode ="lat.get()"
+    //}
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        
+        //response.setContentType("text/html");
+        //PrintWriter out = response.getWriter();
+        //out.println("<h1>" + zipCode+"</h1>" );
     }
 
     @Override

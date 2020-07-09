@@ -27,23 +27,37 @@ public class UserServlet extends HttpServlet{
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
+        String NewEmail= request.getParameter("NewEmail");
         String NewUser= request.getParameter("NewUser");
         String NewPass= request.getParameter("NewPass");
-        
-        if(ValidationService.checkUser("", NewUser, NewPass))
-        {
-            // RequestDispatcher rs = request.getRequestDispatcher("Welcome");
-            // rs.forward(request, response);
+        String NewPassConfirm= request.getParameter("NewPassConfirmation");
 
-            out.print("Login Successful");
+       
+
+        if(!NewPass.equals(NewPassConfirm)){
+            out.println("Passwords do not match");
+           RequestDispatcher rs = request.getRequestDispatcher("index.html");
+           rs.include(request, response);
+           return;
         }
-        else
+        if(ValidationService.checkUser(NewEmail, NewUser)) 
         {
-           out.println("Username or Password incorrect");
+            out.println("Email or username already taken");
            RequestDispatcher rs = request.getRequestDispatcher("index.html");
            rs.include(request, response);
         }
-
+        else
+        {
+            if(ValidationService.createUser(NewEmail, NewUser, NewPass)){
+                out.println("User was created successfully");
+                RequestDispatcher rs = request.getRequestDispatcher("index.html");
+           rs.include(request, response);
+           return;
+            }
+           out.println("Error creating user");
+           RequestDispatcher rs = request.getRequestDispatcher("index.html");
+           rs.include(request, response);
+        }
     }
 }
 
