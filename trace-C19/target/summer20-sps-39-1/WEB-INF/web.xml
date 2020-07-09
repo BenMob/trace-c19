@@ -5,6 +5,16 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.tracecovid.servlets.LoginServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
 
   <servlet>
     <servlet-name>UserServlet</servlet-name>

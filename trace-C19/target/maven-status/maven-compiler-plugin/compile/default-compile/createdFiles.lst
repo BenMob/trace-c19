@@ -3,3 +3,4 @@ com/tracecovid/servlets/OutgoingLocationServlet.class
 com/tracecovid/services/ValidationService.class
 com/tracecovid/servlets/UserServlet.class
 com/tracecovid/services/LocationService.class
+com/tracecovid/servlets/LoginServlet.class
