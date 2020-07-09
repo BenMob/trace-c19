@@ -10,7 +10,6 @@ package com.tracecovid.services;
  import com.google.appengine.api.datastore.Entity;
 
  public class Services{
-
    /**********************************************
     * Converts a Java Object into JSON String
     * @param : A Java Object
