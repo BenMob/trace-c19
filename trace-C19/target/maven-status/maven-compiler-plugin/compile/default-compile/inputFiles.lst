@@ -1,2 +1,5 @@
-/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/servlets/incomingLocationServlet.java
-/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/servlets/outgoingLocationServlet.java
+/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/services/LocationService.java
+/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/services/Services.java
+/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/servlets/IncomingLocationServlet.java
+/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/servlets/OutgoingLocationServlet.java
+/home/bombeni1/sps-summer20-team39/trace-C19/src/main/java/com/tracecovid/entities/LocationModel.java
