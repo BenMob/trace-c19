@@ -37,18 +37,22 @@ public final class LocationService extends Services{
     *
     ***/
     public static Entity createLocationEntity(HttpServletRequest request) throws IOException{
-        throw new NullPointerException("Implement the method located in LocationService.java to create a datastore table");
-        /******
-        TODO: Given an HttpServletRequest request with the following parameters
-          zip, latitude, longitude, date
+        // Create Entity Object that is acceptable by Datastore
+        Entity locationEntity = new Entity("Locations");
 
-          Create a Datastore Entity Table called "Locations" with the following properties
-          zip, latitude, longitude, date and timestamp
+        // Collects all parameter names as presented in <input> tags
+        Enumeration<String> parameterNames = request.getParameterNames();
 
-          return the Entity.
-
-          Note: When this method works the whole system should run
-        */
+         // Adds each name and it's corresponding value in the entity Object
+         while(parameterNames.hasMoreElements()){
+             String name = parameterNames.nextElement();
+             String property = request.getParameter(name);             
+             locationEntity.setProperty(name, property);
+         }
+         
+         // Adds timestamp
+         locationEntity.setProperty("timestamp", (long)System.currentTimeMillis());
+         return locationEntity;
     }
 
 /************************************************************************* 
