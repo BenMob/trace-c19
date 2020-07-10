@@ -17,7 +17,7 @@ public class OutgoingLocationServlet extends HttpServlet{
         List<LocationModel> locations = LocationService.getLocationsByZipCode(DatastoreServiceFactory.getDatastoreService(), request.getParameter("zip"));
 
         //Prints Query results log on the console
-        System.out.println("\n\n\n--- QUERYING ZIP: " + request.getParameter("zip") +);
+        System.out.println("\n\n\n--- QUERYING ZIP: " + request.getParameter("zip"));
         locations.forEach(loc -> {
             System.out.println(loc.toString());
         });

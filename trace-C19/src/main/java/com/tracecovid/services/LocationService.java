@@ -37,6 +37,7 @@ public final class LocationService extends Services{
     *
     ***/
     public static Entity createLocationEntity(HttpServletRequest request) throws IOException{
+        throw new NullPointerException("Implement the method located in LocationService.java to create a datastore table");
         /******
         TODO: Given an HttpServletRequest request with the following parameters
           zip, latitude, longitude, date
@@ -86,7 +87,7 @@ public final class LocationService extends Services{
                 locations.add(getLocationModel(entity)); 
             }
         }catch(Exception e){
-            System.out.println(e + " -> Check getLocationsByZipCode() method");
+            System.out.println(e + " -> Check getAllLocations() method");
         }
          
         return locations;

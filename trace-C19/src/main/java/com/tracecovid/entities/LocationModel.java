@@ -1,4 +1,7 @@
 package com.tracecovid.entities;
+/*****************
+ * This is the class modeling a Location Entity
+ ***/
 
 public class LocationModel{
     private final int MIN_ZIP = 00001;
