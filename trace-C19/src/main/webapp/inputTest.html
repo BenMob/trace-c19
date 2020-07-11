@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="css/style.css"></link>
   </head>
   <body>
-   <div class="content">
-        <a>
-        <p class="w3-panel">This form was only used for testing purposes. Feel free to remove it!</p>
+   <div class="content w3-padding-64">
+       <h2>Test Page</h2>
+        <div class="w3-container w3-half w3-padding-16">
+            <p>This form sends zip, lat, long and date over to datastore by making a POST request at "/inLocation".
+            When the <strong><a href="geocoder.html">Geocoder</a></strong> is ready, the user will just need to enter an address and the app should extract the rest of the information
+            and POST it at "/inLocation" using <code>fetch(method: "POST")</code> maybe ?
+            <br><br> 
+            For now, you may fill this form and then navigate to datastore to see how the information is stored. :)</p>
+        </div>
         <div class="w3-container w3-quarter w3-border w3-round w3-cyan">
             <form class="w3-form w3-margin" method="POST" action="/inLocation">
                 <h2 class="w3-margin">Test Form | Enter Info</h2>
@@ -19,7 +25,12 @@
                 <input class="w3-input w3-border w3-margin-bottom" type="date" name="date" required>
                 <button type="submit">Submit</button>
             </form>
+            <p class="w3-panel">This form was only used for testing purposes. Feel free to remove it once the Geocoder feature is ready.</p>
         </div>
+        <div class="w3-padding-16">
+            <a type="button" class="w3-button w3-cyan" href="outputTest.html">QUERY Datastore</a>
+            <a type="button" class="w3-button w3-cyan" href="index.html">Back Home</a>
+        <div>
     </div>
   </body>
   <script src="js/script.js"></script>
