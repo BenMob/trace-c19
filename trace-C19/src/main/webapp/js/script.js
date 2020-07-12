@@ -40,7 +40,7 @@ myForm.addEventListener('submit', function(e) {
         searchParams.append(pair[0], pair[1]);
     }
 
-    fetch('http://localhost:8080/outLocation', {
+    fetch('/outLocation', {
     method: 'post', 
     body: searchParams
      }).then(function(response) {
