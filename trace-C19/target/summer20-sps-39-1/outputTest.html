@@ -11,12 +11,12 @@
        <h2>Test Page</h2>
         <div class="w3-container w3-half w3-padding-16">
             <p>This is to test the querying datastore by zip code. By typing in a zip code you should get an array of objects with information we have about that zip code, including lat/longs
-                If there is none, then it will return whatever is in datastore at this moment.<br><br>
+                <br>If there is none, then it will return whatever is in datastore at this moment.<br><br>
                 Lat/long here are to be used to plot the map! :)
             </p>
         </div>
         <div class="w3-container w3-quarter w3-border w3-round w3-cyan">
-            <form class="w3-form w3-margin" method="POST" action="/outLocation">
+            <form class="w3-form w3-margin" id="zipForm" method="POST" action="/outLocation">
                 <h2 class="w3-margin">Test Form | Enter Zip Code</h2>
                 <input class="w3-input w3-border w3-margin-bottom" type="number" name="zip" placeholder="Zip code ..." required> 
                 <button type="submit">Submit</button>
