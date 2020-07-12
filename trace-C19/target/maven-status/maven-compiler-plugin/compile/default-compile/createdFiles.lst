@@ -1,5 +1,7 @@
-com/tracecovid/servlets/IncomingLocationServlet.class
 com/tracecovid/servlets/OutgoingLocationServlet.class
-com/tracecovid/services/ValidationService.class
+com/tracecovid/entities/LocationModel.class
 com/tracecovid/servlets/UserServlet.class
 com/tracecovid/services/LocationService.class
+com/tracecovid/services/Services.class
+com/tracecovid/servlets/IncomingLocationServlet.class
+com/tracecovid/services/ValidationService.class
