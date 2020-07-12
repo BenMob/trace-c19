@@ -33,7 +33,7 @@ const myForm = document.getElementById('zipForm');
 myForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
 
-    const formData = new FormData(this);
+    const formData = new FormData(myForm);
     const searchParams = new URLSearchParams();
 
     for(const pair of formData) {
