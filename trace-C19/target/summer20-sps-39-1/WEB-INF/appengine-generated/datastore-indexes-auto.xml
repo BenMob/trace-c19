@@ -1,0 +1,11 @@
+<!-- Indices written at Sun, 12 Jul 2020 18:06:58 CDT -->
+
+<datastore-indexes autoGenerate="true">
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Locations" ancestor="false" source="auto">
+        <property name="zip" direction="asc"/>
+        <property name="timestamp" direction="desc"/>
+    </datastore-index>
+
+</datastore-indexes>
