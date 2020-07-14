@@ -53,3 +53,13 @@ myForm.addEventListener('submit', function(e) {
      })
 
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var autocomplete;
+  autocomplete = new google.maps.places.Autocomplete((document.getElementById('input')), {
+      types: ['geocode']
+  })
+  console.log(autocomplete.getPlace())
+})
