@@ -1,25 +1,35 @@
 package com.tracecovid.services;
-
-import java.sql.*;
-
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.Timestamp;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.IncompleteKey;
+import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Query.*;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StructuredQuery;
+import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
+import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
+import java.util.List;
 
 public class ValidationService {
     public static boolean checkUser(String email,String username) 
     {
         boolean st =false;
         try {
+            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
+            Query<Entity> query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Email", email)).build();
+            QueryResults<Entity> entities = ds.run(query);
 
-            //loading drivers for mysql
-            Class.forName("com.mysql.jdbc.Driver");
+            st = entities.hasNext();
 
-            //creating connection with the database
-            //34.66.144.100
-            Connection con = DriverManager.getConnection("jdbc:mysql://34.66.144.100:3306/applicationDatabase","application","password123");
-            PreparedStatement ps = con.prepareStatement("select * from users where (email like ? or username like ?)");
-            ps.setString(1, email);
-            ps.setString(2, username);
-            ResultSet rs =ps.executeQuery();
-            st = rs.next();
+            if (!st) {
+                query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Username", username)).build();
+                entities = ds.run(query);
+                st = entities.hasNext();
+            }
 
         }
         catch(Exception e) {
@@ -32,18 +42,8 @@ public class ValidationService {
         boolean st =false;
         try {
 
-            //loading drivers for mysql
-            Class.forName("com.mysql.jdbc.Driver");
 
-            //creating connection with the database
-            //34.66.144.100
-            Connection con = DriverManager.getConnection("jdbc:mysql://34.66.144.100:3306/applicationDatabase","application","password123");
-            PreparedStatement ps = con.prepareStatement("insert into users (`email`, `username`, `password`) values (?,?,sha(?))");
-            ps.setString(1, email);
-            ps.setString(2, username);
-            ps.setString(3, password);
-            int rs =ps.executeUpdate();
-            st=(rs>0);
+
 
         }
         catch(Exception e) {
@@ -56,18 +56,7 @@ public class ValidationService {
         boolean st =false;
         try {
 
-            //loading drivers for mysql
-            Class.forName("com.mysql.jdbc.Driver");
-
-            //creating connection with the database
-            //34.66.144.100
-            Connection con = DriverManager.getConnection("jdbc:mysql://34.66.144.100:3306/applicationDatabase","application","password123");
-            PreparedStatement ps = con.prepareStatement("select * from users where (email like ? or username like ?) and password=SHA(?)");
-            ps.setString(1, email);
-            ps.setString(2, username);
-            ps.setString(3, pass);
-            ResultSet rs =ps.executeQuery();
-            st = rs.next();
+          
 
         }
         catch(Exception e) {
