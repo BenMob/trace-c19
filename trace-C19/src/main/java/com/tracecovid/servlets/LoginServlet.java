@@ -34,14 +34,21 @@ public class LoginServlet extends HttpServlet{
         {
             // RequestDispatcher rs = request.getRequestDispatcher("Welcome");
             // rs.forward(request, response);
-
-            out.print("Login Successful");
+          System.out.println("validation login called. user is logged in");
+           RequestDispatcher rs = request.getRequestDispatcher("LoggedInUser.html");
+           rs.include(request, response);
+            System.out.println("Login Successful");
+           
+                return;
         }
         else
         {
-           out.println("Username or Password incorrect");
-           RequestDispatcher rs = request.getRequestDispatcher("index.html");
-           rs.include(request, response);
+           System.out.println("Username or Password incorrect");
+           RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
+             request.setAttribute("error", "Incorrect Login Information");
+            rs.forward(request, response);
+         
+           System.out.println("unable to find user and pass. try again");
         }
 
     }

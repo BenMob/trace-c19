@@ -35,16 +35,19 @@ public class UserServlet extends HttpServlet{
         if(!NewPass.equals(NewPassConfirm)){
             request.setAttribute("error", "Passwords do not match");
             rs.forward(request, response);
+             System.out.println("error creating user passwords do not match");
             return;
         }
         if(ValidationService.checkUser(NewEmail, NewUser)) 
         {
             request.setAttribute("error", "Email or username already taken");
             rs.forward(request, response);
+             System.out.println("error creating user already taken");
         }
         else
         {
             if(ValidationService.createUser(NewEmail, NewUser, NewPass)){
+                System.out.println("loggedIn " + NewEmail);
                 rs = request.getRequestDispatcher("login.jsp"); //changed from login.html
                 rs.forward(request, response);
                 return;

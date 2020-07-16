@@ -17,6 +17,7 @@ import com.tracecovid.entities.UserModel;
 
 import java.util.List;
 
+
 public class ValidationService {
     public static boolean checkUser(String email,String username) 
     {
