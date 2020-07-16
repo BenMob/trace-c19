@@ -22,7 +22,6 @@ public class UserServlet extends HttpServlet{
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
         //aharris-sps-summer20:us-central1:trace-covid
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -32,31 +31,26 @@ public class UserServlet extends HttpServlet{
         String NewPass= request.getParameter("NewPass");
         String NewPassConfirm= request.getParameter("NewPassConfirmation");
 
-       
-
+        RequestDispatcher rs = request.getRequestDispatcher("signup.jsp");
         if(!NewPass.equals(NewPassConfirm)){
-            out.println("Passwords do not match");
-           RequestDispatcher rs = request.getRequestDispatcher("index.html");
-           rs.include(request, response);
-           return;
+            request.setAttribute("error", "Passwords do not match");
+            rs.forward(request, response);
+            return;
         }
         if(ValidationService.checkUser(NewEmail, NewUser)) 
         {
-            out.println("Email or username already taken");
-           RequestDispatcher rs = request.getRequestDispatcher("index.html");
-           rs.include(request, response);
+            request.setAttribute("error", "Email or username already taken");
+            rs.forward(request, response);
         }
         else
         {
             if(ValidationService.createUser(NewEmail, NewUser, NewPass)){
-                out.println("User was created successfully");
-                RequestDispatcher rs = request.getRequestDispatcher("index.html");
-           rs.include(request, response);
-           return;
+                rs = request.getRequestDispatcher("login.jsp"); //changed from login.html
+                rs.forward(request, response);
+                return;
             }
-           out.println("Error creating user");
-           RequestDispatcher rs = request.getRequestDispatcher("index.html");
-           rs.include(request, response);
+            request.setAttribute("error", "Error creating user");
+            rs.forward(request, response);
         }
     }
 }

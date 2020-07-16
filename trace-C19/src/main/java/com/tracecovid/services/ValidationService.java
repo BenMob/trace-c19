@@ -39,21 +39,7 @@ public class ValidationService {
             e.printStackTrace();
         }
         return st;                 
-    }   
-    public static boolean createUser(String email,String username,String password) 
-    {
-        boolean st =false;
-        try {
-
-
-
-
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
-        return st;                 
-    }   
+    }
     public static boolean login(String email,String username,String pass) 
     {
         try {
@@ -74,10 +60,11 @@ public class ValidationService {
         catch(Exception e) {
             e.printStackTrace();
         }
-        return false;                 
+        return false;           
+
     }   
 
-     public static boolean addUser(String email,String username,String password) 
+     public static boolean createUser(String email,String username,String password) 
     {
         try {
             Datastore ds = DatastoreOptions.getDefaultInstance().getService();
