@@ -89,7 +89,7 @@ window.onload = function () {
       /** Google API works only this part of the program (Lines 93 - 142) **/
      
 		fetch(
-          "https://maps.googleapis.com/maps/api/js?key=AIzaSyBt_AbMqe-C-wj5B4XMJgLclQ8qTgEtrKE&callback=initMap&libraries=&v=weekly" +
+          "https://maps.googleapis.com/maps/api/geocode/json?address&key=AIzaSyBt_AbMqe-C-wj5B4XMJgLclQ8qTgEtrKE&cal" +
             lat +
             "," +
             lng,
@@ -190,6 +190,7 @@ window.onload = function () {
           document.getElementById("lng").innerHTML = lng;
           
           /**API**/
+          /** If Google API Is Inputted, Address Is Not Automatically Displayed With Long And Lat**/
 
           fetch(
             "https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json?apiKey=aP66JN1Ux8DOVTI7U5nzU_KHIGB52cNNZkFiU3vidEc&mode=retrieveAddresses&prox=" +
