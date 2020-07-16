@@ -89,7 +89,7 @@ window.onload = function () {
       /** Google API works only this part of the program (Lines 93 - 142) **/
      
 		fetch(
-          "https://maps.googleapis.com/maps/api/geocode/json?address&key=AIzaSyBt_AbMqe-C-wj5B4XMJgLclQ8qTgEtrKE&cal" +
+         /** "https://maps.googleapis.com/maps/api/geocode/json?address&key=AIzaSyBt_AbMqe-C-wj5B4XMJgLclQ8qTgEtrKE&cal" **/ +
             lat +
             "," +
             lng,
