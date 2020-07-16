@@ -1,33 +1,3 @@
-/*
-TODO: Use fetch() to send a POST request at "/outLocation" with a ZIP Code as paramter and 
-you should reive a Json Object with all the locations (lat/long) matching that zip code.
-*/
-
-//  const myForm = document.getElementById('zipForm'); 
-
-//  zipForm.addEventListener('submit', function(e) {
-
-//      e.preventDefault();
-
-//      const formData = new FormData(this);
-//      fetch('OutgoingLocationServlet.java', {
-//          method: 'post',
-//          body: formData
-//          .then(function(response) {
-//              return response.text();
-
-//          }) .then(function(text) {
-//              console.log(text);
-
-//          }) .catch(function(error) {
-//             console.error(error);
-//          })
-         
-     
-//      });
-//  })
-
-
 const myForm = document.getElementById('zipForm'); 
 
 myForm.addEventListener('submit', function(e) {
@@ -53,6 +23,7 @@ myForm.addEventListener('submit', function(e) {
      })
 
 });
+<<<<<<< HEAD
 
 
 
@@ -63,3 +34,5 @@ document.addEventListener("DOMContentLoaded", function() {
   })
   console.log(autocomplete.getPlace())
 })
+=======
+>>>>>>> 80fc983fc29c3970826de9c08362fdda46b05205
