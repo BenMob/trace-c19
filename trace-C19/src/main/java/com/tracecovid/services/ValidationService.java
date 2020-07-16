@@ -12,6 +12,9 @@ import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery;
 import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
 import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
+
+import com.tracecovid.entities.UserModel;
+
 import java.util.List;
 
 public class ValidationService {
@@ -53,16 +56,44 @@ public class ValidationService {
     }   
     public static boolean login(String email,String username,String pass) 
     {
-        boolean st =false;
         try {
+            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
+            Query<Entity> query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Email", email)).build();
+            QueryResults<Entity> entities = ds.run(query);
 
-          
+            if (!entities.hasNext()) {
+                query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Username", username)).build();
+                entities = ds.run(query);
+            }
 
+            Entity User = entities.next();
+            if(User != null && User.getString("Password").equals(pass)){
+                return true;
+            }
         }
         catch(Exception e) {
             e.printStackTrace();
         }
-        return st;                 
+        return false;                 
+    }   
+
+     public static boolean addUser(String email,String username,String password) 
+    {
+        try {
+            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
+
+            UserModel user = new UserModel();
+            user.setEmail(email);
+            user.setUserName(username);
+            user.setPassword(password);
+
+            user.save(ds);
+            return true;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;                 
     }   
 
 }

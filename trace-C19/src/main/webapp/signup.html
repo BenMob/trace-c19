@@ -53,18 +53,22 @@
 
       <form class="form" action="add-user" method="POST">
         <div class="form__group">
-          <input type="text" placeholder="Username" class="form__input" name="NewPass" />
+          <input type="text" placeholder="Username" class="form__input" name="NewUser" />
         </div>
 
         <div class="form__group">
-          <input type="email" placeholder="Email" class="form__input" name="NewPass" />
+          <input type="email" placeholder="Email" class="form__input" name="NewEmail" />
         </div>
 
         <div class="form__group">
           <input type="password" placeholder="Password" class="form__input" name="NewPass" />
         </div>
 
-        <button class="btn" type="button">Register</button>
+        <div class="form__group">
+          <input type="password" placeholder="Password" class="form__input" name="NewPassConfirmation" />
+        </div>
+
+        <button class="btn" type="submit">Register</button>
       </form>
     </div>
 
@@ -81,7 +85,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Javascript -->
-    <script src="signup.js"></script>
+    <script src="js/signup.js"></script>
   </body>
 
 </html>
