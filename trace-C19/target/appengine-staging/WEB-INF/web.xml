@@ -12,6 +12,16 @@
     </servlet>
 
     <servlet>
+        <servlet-name>org.apache.jsp.profile_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.profile_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.index_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.index_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>org.apache.jsp.signup_jsp</servlet-name>
         <servlet-class>org.apache.jsp.signup_jsp</servlet-class>
     </servlet>
@@ -29,6 +39,16 @@
     <servlet-mapping>
         <servlet-name>org.apache.jsp.errorLogIn_jsp</servlet-name>
         <url-pattern>/errorLogIn.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.profile_jsp</servlet-name>
+        <url-pattern>/profile.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.index_jsp</servlet-name>
+        <url-pattern>/index.jsp</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

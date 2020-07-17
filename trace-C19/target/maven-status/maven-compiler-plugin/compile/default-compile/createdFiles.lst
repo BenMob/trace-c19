@@ -5,5 +5,6 @@ com/tracecovid/services/LocationService.class
 com/tracecovid/services/Services.class
 com/tracecovid/entities/UserModel.class
 com/tracecovid/servlets/IncomingLocationServlet.class
+com/tracecovid/helpers/HtmlHelper.class
 com/tracecovid/services/ValidationService.class
 com/tracecovid/servlets/LoginServlet.class

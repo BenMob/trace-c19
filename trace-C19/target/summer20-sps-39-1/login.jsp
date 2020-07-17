@@ -52,13 +52,13 @@
       </header>
 
       <form class="form" action="login" method="POST">
-       <%
-        if(request.getAttribute("error") != null) {
-            %>
-            <h4><%= request.getAttribute("error") %></h4>
-            <%
-        }
-    %>
+        <%
+            if(request.getAttribute("error") != null) {
+                %>
+                <h4><%= request.getAttribute("error") %></h4>
+                <%
+            }
+        %>
         <div class="form__group">
           <input type="text" placeholder="Username" class="form__input" name="User" />
         </div>

@@ -7,7 +7,9 @@ import com.google.cloud.datastore.DatastoreException;
 import com.google.cloud.datastore.Key;
 import com.google.cloud.Timestamp;
 
-public class UserModel{ 
+import java.io.Serializable;
+
+public class UserModel implements Serializable { 
     private Key key;
     private String username;
     private String email;
@@ -43,6 +45,12 @@ public class UserModel{
      public void setEmail(String Email){
         email = Email;
     }
+
+    @Override
+    public String toString() {
+        return "UserModel [key=" + key + "username=" + username + ", email=" + email + "]";
+    }
+
     public boolean save(Datastore dataStore){
         Builder entity;
         if(key == null){

@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
   <link href="style-geocoder.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -33,7 +34,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About Us</a>
@@ -42,14 +43,15 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="signup.html">Log In/Sign Up</a>
+          <a class="nav-link" href="geocoder/geocoder.html" target="_">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" target="_">Contribute</a>
         </li>
       </ul>
+      <a class="nav-link" href="index.html" target="_">Log Out</a>
     </div>
-  </nav>
+    </nav>
 
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAUEjeenSdeOJ08lYQ6apGOPKxvNEH1Dsc&sensor=false&libraries=places"></script>
   
@@ -59,7 +61,7 @@
         <span class="geocoder__icon"> 🌍</span>
         <h1 class="geocoder__title">Geocoder</h1>
         <br>
-        <p class="geocoder__description"></p>
+        <p class="geocoder__description">This form sends zip, lat, long and date over to datastore by making a POST request at "/inLocation". </p>
       </header>
 
   
@@ -112,7 +114,7 @@
         <h4>Latitude:</h4>
       </div>
       <div class="col-sm-4">
-        <h4 class="font-weight-normal" id="lat"></h4>
+        <h4 class="font-weight-normal" id="lat" type="number" step="0.00001" name="latitude" required></h4>
       </div>
     </div>
 
@@ -121,20 +123,29 @@
         <h4>Postcode:</h4>
       </div>
       <div class="col-sm-4">
-        <h4 class="font-weight-normal" id="zipcode"></h4>
+        <h4 class="font-weight-normal" id="zipcode" type="number" name="zip" required></h4>
       </div>
       <div class="col-sm-2">
         <h4>Longitude:</h4>
       </div>
       <div class="col-sm-4">
-        <h4 class="font-weight-normal" id="lng"></h4>
+        <h4 class="font-weight-normal" id="lng" ype="number" step="0.00001" name="longitude" required></h4>
       </div>
     </div>
+
     <div class="row mt-2">
       <div id="dvMap" style="width: 100%;  height: 450px;"> </div>
     </div>
   </div>
 </section>
+
+<div class="date">
+  <input type="date" name="date" required>
+</div>
+
+<div id="wrapper">
+<button type="submit" class="send-btn">Submit</button>
+</div>
   <br>
     <footer class="py-3 bg-dark footer-copyright">
       <div class="container">

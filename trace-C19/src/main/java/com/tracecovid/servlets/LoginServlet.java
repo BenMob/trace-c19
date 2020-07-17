@@ -12,12 +12,17 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 import com.tracecovid.services.ValidationService;
+import com.tracecovid.entities.UserModel;
 
 @WebServlet(name = "LoginServlet", urlPatterns ="/login")
 public class LoginServlet extends HttpServlet{
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().print("Testing");
+        request.getSession().setAttribute("user", null);
+
+        response.setContentType("text/html;charset=UTF-8");
+        RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+        rs.forward(request, response);
     }
 
     @Override
@@ -30,19 +35,17 @@ public class LoginServlet extends HttpServlet{
         String NewUser= request.getParameter("User");
         String NewPass= request.getParameter("Pass");
         
-        if(ValidationService.login(NewUser, NewUser, NewPass))
+        UserModel user = ValidationService.login(NewUser, NewUser, NewPass);
+        if(user != null)
         {
-            // RequestDispatcher rs = request.getRequestDispatcher("Welcome");
-            // rs.forward(request, response);
-          System.out.println("validation login called. user is logged in");
-           RequestDispatcher rs = request.getRequestDispatcher("LoggedInUser.html");
-           rs.include(request, response);
-            System.out.println("Login Successful");
-           
-                return;
+            request.getSession().setAttribute("user", user);
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request, response);
+            return;
         }
         else
         {
+            request.getSession().setAttribute("user", null);
            System.out.println("Username or Password incorrect");
            RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
              request.setAttribute("error", "Incorrect Login Information");

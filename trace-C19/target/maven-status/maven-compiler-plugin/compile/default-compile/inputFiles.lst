@@ -5,5 +5,6 @@
 /home/aharris/sps-team39-summer20/trace-C19/src/main/java/com/tracecovid/services/ValidationService.java
 /home/aharris/sps-team39-summer20/trace-C19/src/main/java/com/tracecovid/servlets/OutgoingLocationServlet.java
 /home/aharris/sps-team39-summer20/trace-C19/src/main/java/com/tracecovid/servlets/LoginServlet.java
+/home/aharris/sps-team39-summer20/trace-C19/src/main/java/com/tracecovid/helpers/HtmlHelper.java
 /home/aharris/sps-team39-summer20/trace-C19/src/main/java/com/tracecovid/entities/LocationModel.java
 /home/aharris/sps-team39-summer20/trace-C19/src/main/java/com/tracecovid/servlets/IncomingLocationServlet.java

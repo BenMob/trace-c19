@@ -41,7 +41,7 @@ public class ValidationService {
         }
         return st;                 
     }
-    public static boolean login(String email,String username,String pass) 
+    public static UserModel login(String email,String username,String pass) 
     {
         try {
             Datastore ds = DatastoreOptions.getDefaultInstance().getService();
@@ -53,15 +53,15 @@ public class ValidationService {
                 entities = ds.run(query);
             }
 
-            Entity User = entities.next();
-            if(User != null && User.getString("Password").equals(pass)){
-                return true;
+            Entity eUser = entities.next();
+            if(eUser != null && eUser.getString("Password").equals(pass)){
+                return new UserModel(eUser);
             }
         }
         catch(Exception e) {
             e.printStackTrace();
         }
-        return false;           
+        return null;           
 
     }   
 
