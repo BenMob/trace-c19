@@ -48,7 +48,7 @@ public class UserServlet extends HttpServlet{
         {
             if(ValidationService.createUser(NewEmail, NewUser, NewPass)){
                 System.out.println("loggedIn " + NewEmail);
-                rs = request.getRequestDispatcher("login.jsp"); //changed from login.html
+                rs = request.getRequestDispatcher("login.jsp"); 
                 rs.forward(request, response);
                 return;
             }
