@@ -17,6 +17,6 @@ public class IncomingLocationServlet extends HttpServlet{
      // Creates a location Entity and saves it to datastore and redirects to index.html 
         Entity location = LocationService.createLocationEntity(request);
         LocationService.save(location);
-        response.sendRedirect("index.html");
+        response.sendRedirect("geocoder.html");
     }
 }
