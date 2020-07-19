@@ -6,9 +6,13 @@ myForm.addEventListener('submit', function(e) {
     const formData = new FormData(myForm);
     const searchParams = new URLSearchParams();
 
+    console.log("FromData " + formData)
     for(const pair of formData) {
         searchParams.append(pair[0], pair[1]);
     }
+
+    console.log("SearchParams " + searchParams)
+
 
     fetch('/outLocation', {
     method: 'post', 
@@ -21,18 +25,6 @@ myForm.addEventListener('submit', function(e) {
      }).catch(function(error) {
          console.error(error);
      })
-
 });
-<<<<<<< HEAD
 
 
-
-document.addEventListener("DOMContentLoaded", function() {
-  var autocomplete;
-  autocomplete = new google.maps.places.Autocomplete((document.getElementById('input')), {
-      types: ['geocode']
-  })
-  console.log(autocomplete.getPlace())
-})
-=======
->>>>>>> 80fc983fc29c3970826de9c08362fdda46b05205

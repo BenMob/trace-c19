@@ -1,0 +1,7 @@
+indexes:
+- kind: "Locations"
+  properties:
+  - name: "zip"
+    direction: asc
+  - name: "timestamp"
+    direction: desc
