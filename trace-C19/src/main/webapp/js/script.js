@@ -23,5 +23,3 @@ myForm.addEventListener('submit', function(e) {
      })
 
 });
-
-
