@@ -1,31 +1,87 @@
 package com.tracecovid.services;
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.Timestamp;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.IncompleteKey;
+import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Query.*;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StructuredQuery;
+import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
+import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 
-import java.sql.*;
+import com.tracecovid.entities.UserModel;
+
+import java.util.List;
 
 
 public class ValidationService {
-    public static boolean checkUser(String email,String username,String pass) 
+    public static boolean checkUser(String email,String username) 
     {
         boolean st =false;
         try {
+            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
+            Query<Entity> query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Email", email)).build();
+            QueryResults<Entity> entities = ds.run(query);
 
-            //loading drivers for mysql
-            Class.forName("com.mysql.jdbc.Driver");
+            st = entities.hasNext();
 
-            //creating connection with the database
-            //34.66.144.100
-            Connection con = DriverManager.getConnection("jdbc:mysql://34.66.144.100:3306","application","password123");
-            PreparedStatement ps = con.prepareStatement("select * from users where (email=? or username=?) and pass=?");
-            ps.setString(1, email);
-            ps.setString(2, username);
-            ps.setString(3, pass);
-            ResultSet rs =ps.executeQuery();
-            st = rs.next();
+            if (!st) {
+                query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Username", username)).build();
+                entities = ds.run(query);
+                st = entities.hasNext();
+            }
 
         }
         catch(Exception e) {
             e.printStackTrace();
         }
         return st;                 
+    }
+    public static UserModel login(String email,String username,String pass) 
+    {
+        try {
+            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
+            Query<Entity> query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Email", email)).build();
+            QueryResults<Entity> entities = ds.run(query);
+
+            if (!entities.hasNext()) {
+                query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Username", username)).build();
+                entities = ds.run(query);
+            }
+
+            Entity eUser = entities.next();
+            if(eUser != null && eUser.getString("Password").equals(pass)){
+                return new UserModel(eUser);
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;           
+
     }   
+
+     public static boolean createUser(String email,String username,String password) 
+    {
+        try {
+            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
+
+            UserModel user = new UserModel();
+            user.setEmail(email);
+            user.setUserName(username);
+            user.setPassword(password);
+
+            user.save(ds);
+            return true;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;                 
+    }   
+
 }
