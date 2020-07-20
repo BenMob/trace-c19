@@ -77,9 +77,14 @@ class Process{
                 TODO verify whether the results come from a single zipcode or multiple zipcodes,
                 then display them the screen accordingly
             */
-            document.getElementById('current-zip').innerHTML = jsonData[0].zip
-            const coordinates = this.getCoordinates(jsonData)
-            this.plotCoordinates(coordinates)
+            let zipCode = document.getElementById('current-zip')
+            if(jsonData.length > 0){
+                zipCode.innerHTML = jsonData[0].zip
+                const coordinates = this.getCoordinates(jsonData)
+                this.plotCoordinates(coordinates)
+            }else{
+                zipCode.innerHTML = 'No Result Found!'
+            }
         }).catch(function(error) {
             console.error(error);
         })
