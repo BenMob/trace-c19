@@ -67,17 +67,21 @@ class Process{
      * @param: data (zip, lat, lng, date) 
      */
     static submitForm(data){
+        console.log('Querying: ' + JSON.stringify(data))
         fetch('/outLocation', {
             method: 'POST', 
             body: data
         }).then((response) => {
             return response.json();
         }).then((jsonData) => {
+            console.log('Response: ' + JSON.stringify(jsonData))
             /* 
                 TODO verify whether the results come from a single zipcode or multiple zipcodes,
                 then display them the screen accordingly
             */
             let zipCode = document.getElementById('current-zip')
+            let zipInput = document.getElementById('zipInput')
+            zipInput.value = ''
             if(jsonData.length > 0){
                 zipCode.innerHTML = jsonData[0].zip
                 const coordinates = this.getCoordinates(jsonData)

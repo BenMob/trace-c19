@@ -97,7 +97,7 @@ function submitData(plotData){
 * This method request a location to the Maps API given lat/long
 */
 function fetchMapsApiPrivate(lat, lng){
-    const apiLink = 'https://maps.googleapis.com/maps/api/geocode/json?address&key=AIzaSyADuXhdbuaYtgDIIQt9uXUjrKfIf6kHeuU&cal' + lat + ',' + lng
+    const apiLink = 'https://maps.googleapis.com/maps/api/geocode/json?address&key=KEY&cal' + lat + ',' + lng
     const configuration = {
             method: "GET",
             headers: {
