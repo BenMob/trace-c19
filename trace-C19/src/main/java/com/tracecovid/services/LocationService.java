@@ -81,8 +81,8 @@ public final class LocationService extends Services{
       *
       * @return: locations 
       */
-      public static List<LocationModel> getAllLocations(DatastoreService dataStore){
-        List<LocationModel> locations = new ArrayList<>();
+      public static ArrayList<LocationModel> getAllLocations(DatastoreService dataStore){
+        ArrayList<LocationModel> locations = new ArrayList<>();
         try{
             Query query = new Query("Locations").addSort("timestamp", SortDirection.DESCENDING);
             PreparedQuery results = dataStore.prepare(query);
@@ -104,13 +104,15 @@ public final class LocationService extends Services{
       * @return: locations 
       */
 
-      public static List<LocationModel> getLocationsByZipCode(DatastoreService dataStore, String zipCode){
-        List<LocationModel> locations = new ArrayList<>();
+      public static ArrayList<LocationModel> getLocationsByZipCode(String zipCode){
+        ArrayList<LocationModel> locations = new ArrayList<>();
+        final DatastoreService dataStore = DatastoreServiceFactory.getDatastoreService();
         try{
-            Filter locationByZipCode = new FilterPredicate("zip", FilterOperator.EQUAL, zipCode);
+            final Filter locationByZipCode = new FilterPredicate("zip", FilterOperator.EQUAL, zipCode);
             Query query = new Query("Locations").addSort("timestamp", SortDirection.DESCENDING).setFilter(locationByZipCode);
             PreparedQuery results = dataStore.prepare(query);
 
+            // Load locations 
             for(Entity entity: results.asIterable()){
                 locations.add(getLocationModel(entity));
             } 
@@ -120,7 +122,7 @@ public final class LocationService extends Services{
                 locations = getAllLocations(dataStore);
             }
         }catch(Exception e){
-            System.out.println(e + " -> Check getLocationsByZipCode(DatastoreService, String) method");
+            System.out.println(e + " -> Check getLocationsByZipCode(String) method");
         }
         return locations;
       }
