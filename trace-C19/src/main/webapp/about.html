@@ -9,14 +9,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style-signup.css">
+  <link rel="stylesheet" href="css/style-about.css">
   </link>
 
   <title>TRACE-C19</title>
 
 </head>
 
-<body class="signup-body">
+<body class="about-body">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">TRACE-C19 🌍 </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,35 +42,70 @@
       </ul>
     </div>
   </nav>
+  <br>
+  <br>
+  <br>
 
-    <div class="signup">
-      <header class="signup__header">
+ <body class="about">
 
-        <span class="signup__icon"> 🌍</span>
-        <h1 class="signup__title">Sign Up</h1>
-        <br>
-        <p class="signup__description">Fill out the form to join the community. Together we could make a difference.</p>
-      </header>
+  <div class="container p-3">
+   
+    <h1 class="title"> About Us  <span class="about_icon"> 🌍</span></h1>  
+    <p class="description"> Get To Know The Team Of Students Who Made This Happen</p>
+    <div class="row">
+        <div class="col-12 col-md-4">
 
-      <form class="form" action="add-user" method="POST">
-        <div class="form__group">
-          <input type="text" placeholder="Username" class="form__input" name="NewPass" />
+            <div class="card mb-3">
+              
+            <div class="card-img" style="background-color: #EFDB72;"></div>  
+            <div class="card-img-overlay d-flex flex-column justify-content-between">
+                <h4 class="card-title">Diana Balderas</h4>
+                <p class="card-text lato">Role: UI/UX Designer</p>
+            </div>
+            </div>
         </div>
-
-        <div class="form__group">
-          <input type="email" placeholder="Email" class="form__input" name="NewPass" />
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
+            <div class="card-img" style="background-color: #9C6791;"></div>    
+            <div class="card-img-overlay d-flex flex-column justify-content-between">
+                <h4 class="card-title">Angelica Harris</h4>
+                <p class="card-text lato">Role: Back-end Engineer</p>
+            </div>
+            </div>
         </div>
-
-        <div class="form__group">
-          <input type="password" placeholder="Password" class="form__input" name="NewPass" />
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
+            <div class="card-img" style="background-color: #2F4895;"></div>    
+            <div class="card-img-overlay d-flex flex-column justify-content-between">
+                <h4 class="card-title">Benjamin Ombeni</h4>
+                <p class="card-text lato">Role: Back-end Engineer</p>
+            </div>
+            </div>
         </div>
-
-        <button class="btn" type="button">Register</button>
-      </form>
     </div>
+</div>
 
-    <p class="signup__link">Have an account? <a href="login.html" class="signup__clickedlink">Login</a></p>
+ <div class="container p-3">
+   
+    <h1 class="title"> Thank You To Our Mentor<span class="about_icon"> 🌍</span></h1>  
+    <p class="description">Who Helped Us Throughout The Whole Process</p>
+    <div class="row">
 
+      <div class="card mb-3">
+            
+              
+            <div class="card-img" style="background-color: #9C6791;"></div>  
+            <div class="card-img-overlay d-flex flex-column justify-content-between">
+                <h4 class="card-title">Manish Kumar</h4>
+                <p class="card-text lato">Mentor</p>
+            </div>
+            </div>
+        </div>
+
+    
+ </body>
+
+<br>
     <br>
     <footer class="py-3 bg-dark footer-copyright">
       <div class="container">
@@ -82,7 +117,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Javascript -->
-    <script src="signup.js"></script>
-  </body>
+    <script src="about.js"></script>
+
 
 </html>
