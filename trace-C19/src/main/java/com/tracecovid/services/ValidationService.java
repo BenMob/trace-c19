@@ -1,17 +1,23 @@
 package com.tracecovid.services;
-import com.google.cloud.datastore.Datastore;
-import com.google.cloud.datastore.DatastoreOptions;
-import com.google.cloud.Timestamp;
-import com.google.cloud.datastore.Entity;
-import com.google.cloud.datastore.FullEntity;
-import com.google.cloud.datastore.IncompleteKey;
-import com.google.cloud.datastore.KeyFactory;
-import com.google.cloud.datastore.Query.*;
-import com.google.cloud.datastore.Query;
-import com.google.cloud.datastore.QueryResults;
-import com.google.cloud.datastore.StructuredQuery;
-import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
-import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+
+import com.google.appengine.api.datastore.Entity;
+// import com.google.appengine.api.datastore.FullEntity;
+// import com.google.appengine.api.datastore.IncompleteKey;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Query.*;
+import com.google.appengine.api.datastore.Query;
+// import com.google.appengine.api.QueryResults;
+// import com.google.appengine.api.datastore.StructuredQuery;
+// import com.google.appengine.api.datastore.StructuredQuery.CompositeFilter;
+// import com.google.appengine.api.datastore.StructuredQuery.PropertyFilter;
 
 import com.tracecovid.entities.UserModel;
 
@@ -23,18 +29,25 @@ public class ValidationService {
     {
         boolean st =false;
         try {
-            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
-            Query<Entity> query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Email", email)).build();
-            QueryResults<Entity> entities = ds.run(query);
-
-            st = entities.hasNext();
+            DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+            Filter filterByEmail = new FilterPredicate("Email", FilterOperator.EQUAL, email);
+            Query query = new Query("User").setFilter(filterByEmail);
+            // QueryResults<Entity> entities = ds.run(query);
+            PreparedQuery results = datastore.prepare(query);
+            for (Entity entity : results.asIterable()) {
+                st = true;
+                break;                
+            } 
 
             if (!st) {
-                query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Username", username)).build();
-                entities = ds.run(query);
-                st = entities.hasNext();
+                Filter filterByUsername = new FilterPredicate("Username", FilterOperator.EQUAL, email);
+                query = new Query("User").setFilter(filterByUsername);
+                results = datastore.prepare(query);
+                for (Entity entity : results.asIterable()) {
+                    st = true;
+                    break;                
+                } 
             }
-
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -44,18 +57,27 @@ public class ValidationService {
     public static UserModel login(String email,String username,String pass) 
     {
         try {
-            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
-            Query<Entity> query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Email", email)).build();
-            QueryResults<Entity> entities = ds.run(query);
-
-            if (!entities.hasNext()) {
-                query = Query.newEntityQueryBuilder().setKind("User").setFilter(PropertyFilter.eq("Username", username)).build();
-                entities = ds.run(query);
+            DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+            Filter filterByEmail = new FilterPredicate("Email", FilterOperator.EQUAL, email);
+            Query query = new Query("User").setFilter(filterByEmail);
+            PreparedQuery results = datastore.prepare(query);
+            boolean got_email =  false;
+            for (Entity entity : results.asIterable()) {
+                got_email = true;
+                if (entity != null && entity.getProperty("Password").equals(pass)) {
+                    return new UserModel(entity);
+                }
             }
-
-            Entity eUser = entities.next();
-            if(eUser != null && eUser.getString("Password").equals(pass)){
-                return new UserModel(eUser);
+            if (!got_email) {
+                Filter filterByUsername = new FilterPredicate("Username", FilterOperator.EQUAL, email);
+                query = new Query("User").setFilter(filterByUsername);
+                results = datastore.prepare(query);
+                for (Entity entity : results.asIterable()) {
+                    got_email = true;
+                    if (entity != null && entity.getProperty("Password").equals(pass)) {
+                        return new UserModel(entity);
+                    }
+                }
             }
         }
         catch(Exception e) {
@@ -68,14 +90,11 @@ public class ValidationService {
      public static boolean createUser(String email,String username,String password) 
     {
         try {
-            Datastore ds = DatastoreOptions.getDefaultInstance().getService();
-
             UserModel user = new UserModel();
             user.setEmail(email);
             user.setUserName(username);
             user.setPassword(password);
-
-            user.save(ds);
+            user.save();
             return true;
         }
         catch(Exception e) {

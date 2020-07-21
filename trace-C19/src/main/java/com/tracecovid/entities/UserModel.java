@@ -1,11 +1,13 @@
 package com.tracecovid.entities;
 import java.util.Date;
-import com.google.cloud.datastore.Entity;
-import com.google.cloud.datastore.Entity.Builder;
-import com.google.cloud.datastore.Datastore;
-import com.google.cloud.datastore.DatastoreException;
-import com.google.cloud.datastore.Key;
-import com.google.cloud.Timestamp;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+
+// import com.google.appengine.api.datastore.Entity.Builder;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.Key;
+// import com.google.appengine.api.datastore.Key;
 
 import java.io.Serializable;
 
@@ -23,9 +25,9 @@ public class UserModel implements Serializable {
     }
     public UserModel(Entity input){
         key = input.getKey();
-        username = input.getString("Username");
-        email = input.getString("Email");
-        password = input.getString("Password");
+        username = (String)input.getProperty("Username");
+        email = (String)input.getProperty("Email");
+        password = (String)input.getProperty("Password");
     }
     public String getUserName(){
         return username;
@@ -51,23 +53,20 @@ public class UserModel implements Serializable {
         return "UserModel [key=" + key + "username=" + username + ", email=" + email + "]";
     }
 
-    public boolean save(Datastore dataStore){
-        Builder entity;
-        if(key == null){
-            Key taskKey = dataStore.allocateId(dataStore.newKeyFactory().setKind("User").newKey());
-            entity = Entity.newBuilder(taskKey).set("Created_At", Timestamp.now());
-        } else {
-            entity = Entity.newBuilder(key);
-        }
-        entity.set("Username", username)
-            .set("Email", email)
-            .set("Password", password) // TODO: Salt and hash password for security
-            .set("Updated_At", Timestamp.now());
+    public boolean save(){
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        Entity entity=new Entity("User");
+        Date date = new Date();
+        entity.setProperty("Username", username);
+        entity.setProperty("Email", email);
+        entity.setProperty("Password", password); // TODO: Salt and hash password for security
+        entity.setProperty("Updated_At", date.toString());
             
         try{
-            dataStore.put(entity.build());
+            datastore.put(entity);
         }
-        catch(DatastoreException ex){
+        catch(Exception e){
+            e.printStackTrace();
             return false;
         }
         return true;

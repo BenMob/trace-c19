@@ -1,4 +1,4 @@
-cd package com.tracecovid.helpers;
+package com.tracecovid.helpers;
 
 
 import javax.servlet.http.HttpServletRequest;
