@@ -45,6 +45,7 @@ nav {
 .top-margin{
     margin-top: 10vh;
 }
+
 /***************************/
 
 .nav-item {
@@ -67,6 +68,7 @@ nav {
 .py-3 {
   background-color: black !important;
   font-family: "Lato", sans-serif;
+  bottom:0;
 }
 
 .footer {
@@ -95,7 +97,7 @@ nav {
 
 .geocoder {
   width: 100%;
-  max-width: 600px;
+  max-width: 80vw;
   margin: 10vh auto;
 }
 

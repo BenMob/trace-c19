@@ -39,7 +39,6 @@ body {
 
 .image {
   text-align: center;
-  background-attachment: fixed;
 }
 .headline {
   top: 10vh;
@@ -60,7 +59,7 @@ nav {
 }
 
 .nav-item {
-  color: #white !important;
+  color: white !important;
   font-family: "Lato", sans-serif;
 }
 

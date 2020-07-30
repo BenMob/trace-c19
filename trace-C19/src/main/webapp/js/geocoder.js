@@ -49,6 +49,7 @@ function displayResult(data){
     document.getElementById("address").innerHTML = data.Label
         ? data.Label
         : "";
+        /*
     document.getElementById("country").innerHTML = data.Country
         ? data.Country
         : "";
@@ -63,7 +64,7 @@ function displayResult(data){
         : "";
     document.getElementById("zipcode").innerHTML = data.PostalCode
         ? data.PostalCode
-        : "";
+        : "";*/
 }
 
 /******************************************************************
@@ -265,8 +266,8 @@ window.onload = function () {
         lat = marker.getPosition().lat();
         lng = marker.getPosition().lng();
 
-        document.getElementById("lat").innerHTML = lat;
-        document.getElementById("lng").innerHTML = lng;
+        //document.getElementById("lat").innerHTML = lat;
+        //document.getElementById("lng").innerHTML = lng;
      
         /** Google API**/
         /** Google API works only this part of the program  **/
@@ -410,8 +411,8 @@ window.onload = function () {
           lat = marker.getPosition().lat();
           lng = marker.getPosition().lng();
 
-          document.getElementById("lat").innerHTML = lat;
-          document.getElementById("lng").innerHTML = lng;
+          //document.getElementById("lat").innerHTML = lat;
+          //document.getElementById("lng").innerHTML = lng;
 
           /**Fetch API**/
           let plotData = new PlotData(lat, lng) 
