@@ -16,6 +16,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.default-font{
+  font-family: "Lato", sans-serif; 
+}
+
 .description {
   font-size: 130%;
   text-align: center;
@@ -33,6 +37,7 @@ body {
 }
 
 .mission {
+  font-size: 80%;
   text-align: center;
   font-family: "Lato", sans-serif;
 }
@@ -40,6 +45,7 @@ body {
 .image {
   text-align: center;
 }
+
 .headline {
   top: 10vh;
 }
@@ -54,9 +60,6 @@ nav {
   color: white;
 }
 
-.navbar {
-  background-color: #2e3587 !important;
-}
 
 .nav-item {
   color: white !important;
@@ -112,7 +115,71 @@ nav {
 
 .footer {
   font-family: "Lato", sans-serif;
+  border-top: solid, 1px, #2e3587;
 }
+
+
+/** A few extra styling */
+.full-height{
+    height: 100vh;
+}
+
+.height-90{
+    height: 75vh;
+}
+
+.height-10{
+    height: 15vh;
+}
+
+.decoration-off{
+    text-decoration: none;
+}
+
+.blue-bg{
+   background-color: #2e3587; 
+}
+
+.yellow-bg{
+    background-color: #eeda73;
+}
+.yellow-txt{
+    color: #eeda73;
+}
+
+.white-txt{
+    color: white;
+}
+
+.black-txt{
+    color: black;
+}
+
+.font-lato{
+    font-family: "Lato", sans-serif !important;
+}
+
+.content{
+    height: 100vh;
+    bottom: 0;
+    top: 0;
+    font-family: "Lato", sans-serif;
+}
+
+.top-margin{
+    margin-top: 10vh;
+}
+
+.top-padding{
+    padding-top: 10vh;
+}
+
+/******************************* */
+
+
+
+
+
 
 @-webkit-keyframes NO {
   from,
