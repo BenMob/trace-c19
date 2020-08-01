@@ -1,0 +1,238 @@
+nav {
+  background-color: black;
+  color: white;
+}
+
+.navbar {
+  background-color: #2e3587 !important;
+}
+
+.nav-item {
+  color: #white !important;
+  font-family: "Lato", sans-serif;
+}
+
+.abt {
+  width: 75%;
+}
+
+.navbar-toggler {
+  color: white;
+}
+
+.btn {
+  margin: 5px;
+}
+
+.py-3 {
+  background-color: #2e3587 !important;
+  font-family: "Lato", sans-serif;
+}
+
+.footer {
+  font-family: "Lato", sans-serif;
+}
+
+/* Sign Up Form */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.signup-body {
+  background-color: #fbe7f0 !important;
+}
+
+.signup {
+  width: 90%;
+  max-width: 340px;
+  margin: 10vh auto;
+}
+
+.signup__header {
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 500px, 0);
+  transform: translate3d(0, 500px, 0);
+  -webkit-animation: arrive 500ms ease-in-out 0.7s forwards;
+  animation: arrive 500ms ease-in-out 0.7s forwards;
+}
+
+.signup__icon {
+  font-size: 300%;
+  text-align: center;
+}
+
+.signup__title {
+  font-size: 300%;
+  margin-bottom: -10px;
+  font-weight: 500;
+  color: black;
+  font-family: "Lato", sans-serif;
+}
+
+.signup__description {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+}
+
+.signup__link {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  text-align:center;
+}
+
+.signup__clickedlink,
+.signup__clickedlink:hover {
+  color: #2e3587;
+   text-align: center;
+}
+
+.form {
+  margin-top: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 500px, 0);
+  transform: translate3d(0, 500px, 0);
+  -webkit-animation: arrive 500ms ease-in-out 0.9s forwards;
+  animation: arrive 500ms ease-in-out 0.9s forwards;
+}
+
+.form--no {
+  -webkit-animation: NO 1s ease-in-out;
+  animation: NO 1s ease-in-out;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  color: black;
+  font-family: "Lato", sans-serif;
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.form__input:focus {
+  background: #f7f7f7;
+}
+
+.btn {
+  display: center;
+  width: 100%;
+  height: 50px;
+  padding: 15px;
+  font-family: "Lato", sans-serif;
+  -webkit-appearance: none;
+  outline: 0;
+  border: 0;
+  color: white;
+  background: #eeda73;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin: 0;
+  box-sizing: border-box;
+}
+.btn:hover {
+  background: #eeda73;
+}
+
+@-webkit-keyframes NO {
+  from,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes NO {
+  from,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+@-webkit-keyframes arrive {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes arrive {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
