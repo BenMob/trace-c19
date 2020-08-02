@@ -22,6 +22,10 @@ public class UserServlet extends HttpServlet{
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        
+
+
         //aharris-sps-summer20:us-central1:trace-covid
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
